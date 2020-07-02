@@ -18,4 +18,34 @@ export const Content = styled.div`
   align-items: center;
 
   border: 1px solid;
+
+  form {
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 4px 0;
+    }
+
+    input {
+      width: 384px;
+      height: 40px;
+      padding: 0 0 0 8px;
+      margin: 0 0 30px 0;
+
+      font-size: 16px;
+    }
+
+    button {
+      width: 384px;
+      height: 40px;
+
+      background-color: black;
+      color: white;
+      border: 1px;
+    }
+  }
 `;
