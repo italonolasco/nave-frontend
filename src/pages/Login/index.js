@@ -1,13 +1,15 @@
 import React from "react";
 import { Form, Input } from "@rocketseat/unform";
+import api from "../../services/api";
 
 import logo from "../../assets/logo.svg";
 
 import { Container, Content } from "./styles";
 
 function Login() {
-  function handleSubmit() {
-    console.log("Logou");
+  async function handleSubmit(data) {
+    const response = await api.post("/users/login", data);
+    console.log(response.data);
   }
 
   return (
