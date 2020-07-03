@@ -1,15 +1,18 @@
-import React from "react";
-import { Form, Input } from "@rocketseat/unform";
-import api from "../../services/api";
+import React, { useContext } from "react";
+import { Form } from "@unform/web";
+import Input from "../../components/Input";
+
+import AuthContext from "../../contexts/auth";
 
 import logo from "../../assets/logo.svg";
 
 import { Container, Content } from "./styles";
 
 function Login() {
-  async function handleSubmit(data) {
-    const response = await api.post("/users/login", data);
-    console.log(response.data);
+  const { signIn } = useContext(AuthContext);
+
+  function handleSubmit(data) {
+    signIn(data);
   }
 
   return (

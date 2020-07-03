@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 
-// import { Container } from './styles';
+import AuthContext from "../../contexts/auth";
+
+import { Container } from "./styles";
 
 function Home() {
-  return <h1>Home</h1>;
+  const { signOut } = useContext(AuthContext);
+
+  function handleSignOut() {
+    signOut();
+  }
+
+  return (
+    <Container>
+      <h1>Oi</h1>
+    </Container>
+  );
 }
 
 export default Home;
