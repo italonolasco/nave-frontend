@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import AuthContext from "../../contexts/auth";
+import { useAuth } from "../../contexts/auth";
 
 import { Container } from "./styles";
 
 function Home() {
-  const { signOut } = useContext(AuthContext);
+  const { signOut } = useAuth();
 
   function handleSignOut() {
     signOut();
@@ -13,7 +13,9 @@ function Home() {
 
   return (
     <Container>
-      <h1>Oi</h1>
+      <button type="submit" onClick={handleSignOut}>
+        Sair
+      </button>
     </Container>
   );
 }

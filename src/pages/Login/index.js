@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Form } from "@unform/web";
 import Input from "../../components/Input";
 
-import AuthContext from "../../contexts/auth";
+import { useAuth } from "../../contexts/auth";
 
 import logo from "../../assets/logo.svg";
 
 import { Container, Content } from "./styles";
 
 function Login() {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   function handleSubmit(data) {
     signIn(data);
