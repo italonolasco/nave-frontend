@@ -1,13 +1,16 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
+
+import PrivateRoute from "../components/PrivateRoute";
 
 import Home from "../pages/Home";
+import AddNaver from "../pages/AddNaver";
 
 function AuthorizedRoutes() {
   return (
     <Switch>
-      <Route path="/home" component={Home} />
-      <Redirect to="/home" />
+      <PrivateRoute path="/" exact component={Home} />
+      <PrivateRoute path="/add" component={AddNaver} />
     </Switch>
   );
 }

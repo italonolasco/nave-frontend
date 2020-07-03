@@ -1,5 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import api from "../services/api";
+import { toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext({});
 
@@ -17,16 +20,20 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   async function signIn(data) {
-    const response = await api.post("/users/login", data);
+    try {
+      const response = await api.post("/users/login", data);
 
-    const { token, id: user_id } = response.data;
+      const { token, id: user_id } = response.data;
 
-    setUser_id(user_id);
+      setUser_id(user_id);
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    localStorage.setItem("@Auth:user_id", user_id);
-    localStorage.setItem("@Auth:token", token);
+      localStorage.setItem("@Auth:user_id", user_id);
+      localStorage.setItem("@Auth:token", token);
+    } catch (err) {
+      toast.error("Usuário ou Senha incorretos");
+    }
   }
 
   function signOut() {
