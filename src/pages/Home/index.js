@@ -1,26 +1,104 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { useAuth } from "../../contexts/auth";
+import juju from "../../assets/juju.svg";
 
-import { Container } from "./styles";
+import { FaTrash, FaPen } from "react-icons/fa";
+
+import { Container, Header, Content, Buttons } from "./styles";
 
 function Home() {
-  const { signOut } = useAuth();
-
-  function handleSignOut() {
-    signOut();
-  }
+  useEffect(() => {}, []);
 
   return (
     <Container>
-      <Link to="/add">
-        <button type="submit">Adicionar</button>
-      </Link>
+      <Header>
+        <h1>Navers</h1>
 
-      <button type="submit" onClick={handleSignOut}>
-        Sair
-      </button>
+        <Link to="/add">
+          <button type="button">Adicionar Naver</button>
+        </Link>
+      </Header>
+      <Content>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+        <li>
+          <img src={juju} alt="naver" />
+          <strong>Juliano Reis</strong>
+          <p>Front-end Developer</p>
+          <Buttons>
+            <button class="remove" type="button">
+              <FaTrash color="#000" size="18" />
+            </button>
+            <button class="edit" type="button">
+              <FaPen color="#000" size="18" />
+            </button>
+          </Buttons>
+        </li>
+      </Content>
     </Container>
   );
 }
