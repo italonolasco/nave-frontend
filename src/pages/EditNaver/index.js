@@ -7,7 +7,7 @@ import Input from "../../components/Input";
 
 import { Container } from "./styles";
 
-function AddNaver() {
+function EditNaver() {
   /*const { addNaver } = useAuth();
 
   function handleSubmit(data) {
@@ -18,7 +18,7 @@ function AddNaver() {
     <Container>
       <div>
         <FaChevronLeft color="#000" size="18" />
-        <h2>Adicionar Naver</h2>
+        <h2>Editar Naver</h2>
       </div>
 
       <Form>
@@ -72,4 +72,4 @@ function AddNaver() {
   );
 }
 
-export default AddNaver;
+export default EditNaver;

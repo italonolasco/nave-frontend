@@ -1,14 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import juju from "../../assets/juju.svg";
+import api from "../../services/api";
 
 import { FaTrash, FaPen } from "react-icons/fa";
 
 import { Container, Header, Content, Buttons } from "./styles";
 
 function Home() {
-  useEffect(() => {}, []);
+  const [navers, setNavers] = useState([]);
+
+  useEffect(() => {
+    async function getNavers() {
+      const response = await api.get("/navers");
+
+      setNavers(response.data);
+      console.log(response.data);
+    }
+
+    getNavers();
+  }, []);
 
   return (
     <Container>
@@ -20,84 +31,21 @@ function Home() {
         </Link>
       </Header>
       <Content>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
-        <li>
-          <img src={juju} alt="naver" />
-          <strong>Juliano Reis</strong>
-          <p>Front-end Developer</p>
-          <Buttons>
-            <button class="remove" type="button">
-              <FaTrash color="#000" size="18" />
-            </button>
-            <button class="edit" type="button">
-              <FaPen color="#000" size="18" />
-            </button>
-          </Buttons>
-        </li>
+        {navers.map((naver) => (
+          <li key={naver.id}>
+            <img src={naver.url} alt="naver" />
+            <strong>{naver.name}</strong>
+            <p>{naver.job_role}</p>
+            <Buttons>
+              <button class="remove" type="button">
+                <FaTrash color="#000" size="18" />
+              </button>
+              <button class="edit" type="button">
+                <FaPen color="#000" size="18" />
+              </button>
+            </Buttons>
+          </li>
+        ))}
       </Content>
     </Container>
   );

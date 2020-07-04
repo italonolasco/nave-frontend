@@ -30,13 +30,18 @@ export const Content = styled.ul`
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 24px;
 
+  img {
+    height: 280px;
+    width: 280px;
+  }
+
   strong {
     display: block;
     margin: 4px 0;
   }
 
   p {
-    margin: 0 0 4px 0;
+    margin: 0 0 8px 0;
   }
 `;
 

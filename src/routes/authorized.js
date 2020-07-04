@@ -3,7 +3,6 @@ import { Switch } from "react-router-dom";
 
 import PrivateRoute from "../components/PrivateRoute";
 
-import Header from "../components/Header";
 import Home from "../pages/Home";
 import AddNaver from "../pages/AddNaver";
 

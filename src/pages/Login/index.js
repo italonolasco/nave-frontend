@@ -22,7 +22,7 @@ function Login() {
 
         <Form onSubmit={handleSubmit}>
           <label htmlFor="email">E-mail</label>
-          <Input type="text" name="email" id="email" placeholder="E-mail" />
+          <Input type="email" name="email" id="email" placeholder="E-mail" />
           <label htmlFor="password">Senha</label>
           <Input
             type="password"
