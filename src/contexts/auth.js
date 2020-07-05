@@ -45,9 +45,12 @@ export const AuthProvider = ({ children }) => {
     try {
       data.birthdate = data.birthdate.replace(/-/g, "/");
       data.admission_date = data.admission_date.replace(/-/g, "/");
-      api.post("/navers", data);
+      await api.post("/navers", data);
+
+      return true;
     } catch (err) {
       toast.error("Não foi possível cadastrar o Naver");
+      return false;
     }
   }
 

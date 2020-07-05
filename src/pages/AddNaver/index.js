@@ -1,18 +1,25 @@
-import React from "react";
-
-import { FaChevronLeft } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaChevronLeft, FaTimes } from "react-icons/fa";
 import { Form } from "@unform/web";
+
 import Input from "../../components/Input";
 
 import { useAuth } from "../../contexts/auth";
 
 import { Container } from "./styles";
+import { ModalStyle, Content } from "../../styles/modal";
 
 function AddNaver() {
+  const [alert, setAlert] = useState(false);
+
   const { addNaver } = useAuth();
 
   function handleSubmit(data) {
-    addNaver(data);
+    addNaver(data).then((addNaver) => {
+      if (addNaver) {
+        setAlert(true);
+      }
+    });
   }
 
   return (
@@ -79,6 +86,19 @@ function AddNaver() {
         </p>
         <button type="submit">Salvar</button>
       </Form>
+
+      <ModalStyle isOpen={alert}>
+        <Content>
+          <div>
+            <h1>Naver Adicionado</h1>
+            <button onClick={() => setAlert(false)}>
+              <FaTimes color="#000" size="24" />
+            </button>
+          </div>
+
+          <p>Naver criado com sucesso</p>
+        </Content>
+      </ModalStyle>
     </Container>
   );
 }
