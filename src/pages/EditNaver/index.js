@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { FaChevronLeft, FaTimes } from "react-icons/fa";
 
@@ -19,7 +20,9 @@ function EditNaver() {
   return (
     <Container>
       <div>
-        <FaChevronLeft color="#000" size="18" />
+        <Link to="/">
+          <FaChevronLeft color="#000" size="18" />
+        </Link>
         <h2>Editar Naver</h2>
       </div>
 
