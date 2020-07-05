@@ -37,10 +37,10 @@ function Home() {
             <strong>{naver.name}</strong>
             <p>{naver.job_role}</p>
             <Buttons>
-              <button class="remove" type="button">
+              <button className="remove" type="button">
                 <FaTrash color="#000" size="18" />
               </button>
-              <button class="edit" type="button">
+              <button className="edit" type="button">
                 <FaPen color="#000" size="18" />
               </button>
             </Buttons>
