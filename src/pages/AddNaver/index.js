@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaChevronLeft, FaTimes } from "react-icons/fa";
 import { Form } from "@unform/web";
+import { FaChevronLeft, FaTimes } from "react-icons/fa";
 
 import Input from "../../components/Input";
 
 import { useAuth } from "../../contexts/auth";
 
 import { Container } from "./styles";
-import { ModalStyle, Content } from "../../styles/modal";
+import { ModalStyle, Content } from "../../styles/confirmation";
 
 function AddNaver() {
   const [alert, setAlert] = useState(false);
-
   const { addNaver } = useAuth();
 
   function handleSubmit(data) {
-    addNaver(data).then((addNaver) => {
-      if (addNaver) {
+    addNaver(data).then((naverAdded) => {
+      if (naverAdded) {
         setAlert(true);
       }
     });

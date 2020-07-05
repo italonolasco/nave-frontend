@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
+import { Form } from "@unform/web";
 import { FaChevronLeft, FaTimes } from "react-icons/fa";
 
-import { Form } from "@unform/web";
 import Input from "../../components/Input";
 
+import { useAuth } from "../../contexts/auth";
+
 import { Container } from "./styles";
-import { ModalStyle, Content } from "../../styles/modal";
+import { ModalStyle, Content } from "../../styles/confirmation";
 
 function EditNaver() {
   const [alert, setAlert] = useState(false);
-  /*const { addNaver } = useAuth();
+  const { editNaver } = useAuth();
+
+  const location = useLocation();
 
   function handleSubmit(data) {
-    addNaver(data);
-  }*/
+    editNaver(data, location.state.id).then((naverEdited) => {
+      if (naverEdited) {
+        setAlert(true);
+      }
+    });
+  }
 
   return (
     <Container>
@@ -26,7 +33,7 @@ function EditNaver() {
         <h2>Editar Naver</h2>
       </div>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <p>
           <label htmlFor="name">Nome</label>
           <Input type="text" name="name" id="name" placeholder="Nome" />

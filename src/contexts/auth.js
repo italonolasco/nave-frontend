@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import api from "../services/api";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext({});
@@ -45,6 +44,7 @@ export const AuthProvider = ({ children }) => {
     try {
       data.birthdate = data.birthdate.replace(/-/g, "/");
       data.admission_date = data.admission_date.replace(/-/g, "/");
+      console.log(data);
       await api.post("/navers", data);
 
       return true;
@@ -54,9 +54,30 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  async function editNaver(data, id) {
+    try {
+      data.birthdate = data.birthdate.replace(/-/g, "/");
+      data.admission_date = data.admission_date.replace(/-/g, "/");
+      console.log(data, id);
+      await api.put(`/navers/${id}`, data);
+
+      return true;
+    } catch (err) {
+      toast.error("Não foi possível editar o Naver");
+      return false;
+    }
+  }
+
   return (
     <AuthContext.Provider
-      value={{ signed: !!user_id, user_id, signIn, signOut, addNaver }}
+      value={{
+        signed: !!user_id,
+        user_id,
+        signIn,
+        signOut,
+        addNaver,
+        editNaver,
+      }}
     >
       {children}
     </AuthContext.Provider>
