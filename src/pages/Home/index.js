@@ -40,9 +40,11 @@ function Home() {
               <button className="remove" type="button">
                 <FaTrash color="#000" size="18" />
               </button>
-              <button className="edit" type="button">
-                <FaPen color="#000" size="18" />
-              </button>
+              <Link to="/edit">
+                <button className="edit" type="button">
+                  <FaPen color="#000" size="18" />
+                </button>
+              </Link>
             </Buttons>
           </li>
         ))}
