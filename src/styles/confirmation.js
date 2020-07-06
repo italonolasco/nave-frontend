@@ -9,7 +9,7 @@ export const ModalStyle = styled(Modal)`
   justify-content: center;
 `;
 
-export const Content = styled.div`
+export const ModalContent = styled.div`
   width: 592px;
   height: 160px;
   background: white;
@@ -22,6 +22,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     h1 {
       margin: 0 0 24px 0;
     }

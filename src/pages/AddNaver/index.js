@@ -8,7 +8,7 @@ import Input from "../../components/Input";
 import { useAuth } from "../../contexts/auth";
 
 import { Container } from "./styles";
-import { ModalStyle, Content } from "../../styles/confirmation";
+import { ModalStyle, ModalContent } from "../../styles/confirmation";
 
 function AddNaver() {
   const [alert, setAlert] = useState(false);
@@ -90,7 +90,7 @@ function AddNaver() {
       </Form>
 
       <ModalStyle isOpen={alert}>
-        <Content>
+        <ModalContent>
           <div>
             <h1>Naver Adicionado</h1>
             <button onClick={() => setAlert(false)}>
@@ -99,7 +99,7 @@ function AddNaver() {
           </div>
 
           <p>Naver criado com sucesso</p>
-        </Content>
+        </ModalContent>
       </ModalStyle>
     </Container>
   );

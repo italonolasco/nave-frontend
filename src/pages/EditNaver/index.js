@@ -8,7 +8,7 @@ import Input from "../../components/Input";
 import { useAuth } from "../../contexts/auth";
 
 import { Container } from "./styles";
-import { ModalStyle, Content } from "../../styles/confirmation";
+import { ModalStyle, ModalContent } from "../../styles/confirmation";
 
 function EditNaver() {
   const [alert, setAlert] = useState(false);
@@ -92,7 +92,7 @@ function EditNaver() {
       </Form>
 
       <ModalStyle isOpen={alert}>
-        <Content>
+        <ModalContent>
           <div>
             <h1>Naver Atualizado</h1>
             <button onClick={() => setAlert(false)}>
@@ -101,7 +101,7 @@ function EditNaver() {
           </div>
 
           <p>Naver atualizado com sucesso!</p>
-        </Content>
+        </ModalContent>
       </ModalStyle>
     </Container>
   );

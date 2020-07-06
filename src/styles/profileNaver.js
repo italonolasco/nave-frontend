@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Modal from "react-modal";
 
-export const ModalStyle = styled(Modal)`
+export const ModalStyleProfile = styled(Modal)`
   height: 100vh;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@ export const ModalButtons = styled.div`
   flex-direction: row;
 
   button {
-    margin: 120px 12px 0 0;
+    margin: 50px 12px 0 0;
     border: none;
     background: #fff;
   }

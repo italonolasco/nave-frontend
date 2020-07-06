@@ -5,8 +5,11 @@ import { FaTrash, FaPen, FaTimes } from "react-icons/fa";
 import api from "../../services/api";
 import { useAuth } from "../../contexts/auth";
 
+import { ModalStyle, ModalContent } from "../../styles/confirmation";
+import { ModalStyleDelete, ModalContentDelete } from "../../styles/delete";
+
 import {
-  ModalStyle,
+  ModalStyleProfile,
   ModalContainer,
   ModalButtons,
   Profile,
@@ -16,6 +19,8 @@ import { Container, Header, Content, Buttons } from "./styles";
 
 function Home() {
   const [alert, setAlert] = useState(false);
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [wishDeleteAlert, setWishDeleteAlert] = useState(false);
 
   const [navers, setNavers] = useState([]);
   const [selectedNaver, setSelectedNaver] = useState([]);
@@ -37,8 +42,18 @@ function Home() {
     setAlert(true);
   }
 
+  function setSelectedNaverToDelete(naver) {
+    setSelectedNaver(naver);
+    setWishDeleteAlert(true);
+  }
+
   function handleRemove(id) {
-    removeNaver(id);
+    setWishDeleteAlert(false);
+    removeNaver(id).then((naverRemoved) => {
+      if (naverRemoved) {
+        setDeleteAlert(true);
+      }
+    });
   }
 
   return (
@@ -64,7 +79,7 @@ function Home() {
               <button
                 className="remove"
                 type="button"
-                onClick={() => handleRemove(naver.id)}
+                onClick={() => setSelectedNaverToDelete(naver)}
               >
                 <FaTrash color="#000" size="18" />
               </button>
@@ -83,7 +98,7 @@ function Home() {
         ))}
       </Content>
 
-      <ModalStyle isOpen={alert}>
+      <ModalStyleProfile isOpen={alert}>
         <ModalContainer>
           <div>
             <img src={selectedNaver.url} alt="naver" />
@@ -104,7 +119,11 @@ function Home() {
             <p>{selectedNaver.project}</p>
 
             <ModalButtons>
-              <button className="remove" type="button">
+              <button
+                className="remove"
+                type="button"
+                onClick={() => setWishDeleteAlert(true)}
+              >
                 <FaTrash color="#000" size="18" />
               </button>
               <Link
@@ -125,7 +144,37 @@ function Home() {
             </button>
           </CloseButton>
         </ModalContainer>
+      </ModalStyleProfile>
+
+      <ModalStyle isOpen={deleteAlert}>
+        <ModalContent>
+          <div>
+            <h1>Naver excluído</h1>
+            <button onClick={() => setDeleteAlert(false)}>
+              <FaTimes color="#000" size="24" />
+            </button>
+          </div>
+
+          <p>Naver excluido com sucesso</p>
+        </ModalContent>
       </ModalStyle>
+
+      <ModalStyleDelete isOpen={wishDeleteAlert}>
+        <ModalContentDelete>
+          <h1>Excluir Naver</h1>
+
+          <p>Tem certeza que deseja excluir este Naver?</p>
+          <button className="cancel" onClick={() => setWishDeleteAlert(false)}>
+            Cancelar
+          </button>
+          <button
+            className="confirm"
+            onClick={() => handleRemove(selectedNaver.id)}
+          >
+            Excluir
+          </button>
+        </ModalContentDelete>
+      </ModalStyleDelete>
     </Container>
   );
 }

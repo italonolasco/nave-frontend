@@ -67,7 +67,13 @@ export const AuthProvider = ({ children }) => {
   }
 
   async function removeNaver(id) {
-    await api.delete(`/navers/${id}`);
+    try {
+      await api.delete(`/navers/${id}`);
+      return true;
+    } catch (err) {
+      toast.error("Não foi possível excluir o Naver");
+      return false;
+    }
   }
 
   return (
