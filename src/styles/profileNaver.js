@@ -30,19 +30,8 @@ export const Profile = styled.div`
   display: flex;
   flex-direction: column;
 
-  .header {
-    display: flex;
-    flex-direction: row;
-
-    h2 {
-      margin: 0 170px 24px 0;
-    }
-
-    button {
-      align-self: flex-start;
-      border: none;
-      background: #fff;
-    }
+  h2 {
+    margin: 0 170px 24px 0;
   }
 
   h3 {
@@ -60,6 +49,19 @@ export const ModalButtons = styled.div`
 
   button {
     margin: 120px 12px 0 0;
+    border: none;
+    background: #fff;
+  }
+`;
+
+export const CloseButton = styled.div`
+  width: 2000px;
+  padding: 21px 21px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  button {
     border: none;
     background: #fff;
   }

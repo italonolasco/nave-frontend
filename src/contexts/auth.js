@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }) => {
     try {
       data.birthdate = data.birthdate.replace(/-/g, "/");
       data.admission_date = data.admission_date.replace(/-/g, "/");
-      console.log(data);
       await api.post("/navers", data);
 
       return true;
@@ -58,7 +57,6 @@ export const AuthProvider = ({ children }) => {
     try {
       data.birthdate = data.birthdate.replace(/-/g, "/");
       data.admission_date = data.admission_date.replace(/-/g, "/");
-      console.log(data, id);
       await api.put(`/navers/${id}`, data);
 
       return true;
@@ -66,6 +64,10 @@ export const AuthProvider = ({ children }) => {
       toast.error("Não foi possível editar o Naver");
       return false;
     }
+  }
+
+  async function removeNaver(id) {
+    await api.delete(`/navers/${id}`);
   }
 
   return (
@@ -77,6 +79,7 @@ export const AuthProvider = ({ children }) => {
         signOut,
         addNaver,
         editNaver,
+        removeNaver,
       }}
     >
       {children}

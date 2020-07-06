@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { FaTrash, FaPen, FaTimes } from "react-icons/fa";
 
 import api from "../../services/api";
+import { useAuth } from "../../contexts/auth";
 
 import {
   ModalStyle,
   ModalContainer,
   ModalButtons,
   Profile,
+  CloseButton,
 } from "../../styles/profileNaver";
 import { Container, Header, Content, Buttons } from "./styles";
 
@@ -17,6 +19,8 @@ function Home() {
 
   const [navers, setNavers] = useState([]);
   const [selectedNaver, setSelectedNaver] = useState([]);
+
+  const { removeNaver } = useAuth();
 
   useEffect(() => {
     async function getNavers() {
@@ -31,6 +35,10 @@ function Home() {
   function handleClick(naver) {
     setSelectedNaver(naver);
     setAlert(true);
+  }
+
+  function handleRemove(id) {
+    removeNaver(id);
   }
 
   return (
@@ -53,7 +61,11 @@ function Home() {
             <strong onClick={() => handleClick(naver)}>{naver.name}</strong>
             <p onClick={() => handleClick(naver)}>{naver.job_role}</p>
             <Buttons>
-              <button className="remove" type="button">
+              <button
+                className="remove"
+                type="button"
+                onClick={() => handleRemove(naver.id)}
+              >
                 <FaTrash color="#000" size="18" />
               </button>
               <Link
@@ -78,12 +90,7 @@ function Home() {
           </div>
 
           <Profile>
-            <div className="header">
-              <h2>{selectedNaver.name}</h2>
-              <button onClick={() => setAlert(false)}>
-                <FaTimes color="#000" size="24" />
-              </button>
-            </div>
+            <h2>{selectedNaver.name}</h2>
 
             <p>{selectedNaver.job_role}</p>
 
@@ -112,6 +119,11 @@ function Home() {
               </Link>
             </ModalButtons>
           </Profile>
+          <CloseButton>
+            <button onClick={() => setAlert(false)}>
+              <FaTimes color="#000" size="24" />
+            </button>
+          </CloseButton>
         </ModalContainer>
       </ModalStyle>
     </Container>
