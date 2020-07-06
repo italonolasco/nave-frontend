@@ -1,4 +1,4 @@
-# Desafio de Cadastro de Vagas
+# Desafio de Cadastro de Vagas - Nave Frontend Challenge
 
 Este projeto foi elaborado para servir a uma aplicação one seja possível cadastrar e administrar funcionários da empresa Nave.
 
