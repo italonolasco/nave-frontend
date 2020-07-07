@@ -22,3 +22,5 @@ Em alguns momentos encontrei instbilidades ao enviar os dados para o backend, po
 
 #### Observações
 Por o foco do desafio ser, principalmente, no Javascript e não no CSS, não me preocupei em deixar o front tão responsivo.
+
+#### Não utilizei o GET para buscar um naver específico, na rota naver/:id, visto que quando a página Home é carregada todos os usuários já são carregados no sistema, então apenas persisti este usuário quando foi necessário, evitando assim, chamadas adicionais à API. 
