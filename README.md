@@ -15,6 +15,10 @@ Este projeto foi elaborado para servir a uma aplicação one seja possível cada
 
 A aplicação foi construida utilizando Yarn. Após montar a aplicação, é necessário rodar o comando "yarn start".
 
+### Funcionalidade Extras
+* Caso não seja possível realizar login, adicionar, editar ou deletar usuários, um toast aparecerá na tela avisando ao usuário.
+* Os inputs foram criados para seus respectivos tipos. Por exemplo, uma entrada de e-mail, só permite uma entrada do tipo "..."@email..."
+
 #### Dificuldades
 Comecei o projeto utilizando Redux para persistir os dados, mesmo sabendo que estava adicionando uma complexidade extra ao projeto. Ao me deparar com erros, retirei um dia para estudar Context API e notei que era bem simples resolver assim.
 
